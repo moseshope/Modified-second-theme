@@ -226,8 +226,8 @@
       "subtotal": "Subtotal",
       "enter_order_note": "Ingrese una nota de regalo o instrucciones especiales de entrega a continuación:",
       "special_instructions": "Instrucciones especiales",
-      "shipping_at_checkout": "",
-      "taxes_at_checkout": "",
+      "shipping_at_checkout": "Envío e impuestos calculados en el proceso de pago",
+      "taxes_at_checkout": "Impuestos calculados en el proceso de pago",
       "total_line_price": "Precio de línea total",
       "cart_empty": "Su carrito está vacío"
     },
@@ -507,11 +507,8 @@
       "sale_percentage_single_html": "Ahorra hasta <span data-price-percent-saved>{{ savings }}<\/span>%",
       "sale_money_range_html": "Ahorra hasta <span class=\"money\" data-price-money-saved>{{ savings }}<\/span>",
       "sale_money_single_html": "Ahorra <span class=\"money\" data-price-money-saved>{{ savings }}<\/span>",
-      "sold_out": "Sin Stock",
+      "sold_out": "Vendido",
       "sale": "Venta"
     }
-  },
-  "quotify": {
-    "request_quote": "Solicitar Cotización"
   }
 }

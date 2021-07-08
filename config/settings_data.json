@@ -106,11 +106,9 @@
             "settings": {
               "meganav_trigger": "",
               "text_1": "",
-              "link_1": "",
               "position_1": "last",
               "size_1": "medium",
               "text_2": "",
-              "link_2": "",
               "position_2": "last",
               "size_2": "medium"
             }
@@ -120,11 +118,9 @@
             "settings": {
               "meganav_trigger": "",
               "text_1": "",
-              "link_1": "",
               "position_1": "last",
               "size_1": "medium",
               "text_2": "",
-              "link_2": "",
               "position_2": "first",
               "size_2": "small"
             }
@@ -151,7 +147,6 @@
           "small_promo_heading": "",
           "small_promo_text": "",
           "small_promo_text_mobile": "",
-          "small_promo_link": "",
           "small_promo_icon": "none",
           "cart_icon": "icon-cart"
         }
@@ -319,7 +314,6 @@
               "title": "Grid",
               "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
               "color": "#ffffff",
-              "block_link": "",
               "button_text": "",
               "button_style": "primary",
               "show_overlay": false,
@@ -334,7 +328,6 @@
               "title": "Grid",
               "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
               "color": "#ffffff",
-              "block_link": "",
               "button_text": "",
               "button_style": "primary",
               "show_overlay": false,
@@ -349,7 +342,6 @@
               "title": "Grid",
               "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
               "color": "#ffffff",
-              "block_link": "",
               "button_text": "",
               "button_style": "primary",
               "show_overlay": false,
@@ -364,7 +356,6 @@
               "title": "Grid",
               "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
               "color": "#ffffff",
-              "block_link": "",
               "button_text": "",
               "button_style": "primary",
               "show_overlay": false,
@@ -491,11 +482,11 @@
         "settings": {
           "show_announcement": true,
           "homepage_announcement": false,
-          "announcement_text": "ENVÍO GRATIS!! en Viña del mar, Valparaíso, Quilpué, Villa Alemana, Santiago (comunas dentro de Américo Vespucio) ver condiciones",
-          "announcement_text_mobile": "ENVÍO GRATIS!!  - Gran Valparaiso (sobre $100.000) & Gran Santiago!! (sobre $200.000)",
+          "announcement_text": "Envío a domicilio en Viña del mar, Valparaíso, Quilpué, Villa Alemana, Santiago (comunas dentro del Américo Vespucio)",
+          "announcement_text_mobile": "Envío a domicilio - ver comunas",
           "announcement_link": "shopify:\/\/pages\/envio-gratis-cobertura",
           "announcement_color": "#000000",
-          "announcement_background": "#e2b738"
+          "announcement_background": "#f5f3ed"
         }
       },
       "static-product-recommendations": {
@@ -525,13 +516,11 @@
               "title": "Servicio de Instalación",
               "text": "Pisos Flotantes, Alfombras, Pastos Sintéticos, Pisos Vinílicos",
               "color": "#ffffff",
-              "link": "",
               "text_alignment": "center",
               "button_one_label": "Solicita visita técnica",
               "button_one_link": "shopify:\/\/collections\/con-instalacion",
               "button_one_style": "primary",
               "button_two_label": "",
-              "button_two_link": "",
               "button_two_style": "secondary",
               "show_overlay": true,
               "overlay_color": "#000000",
@@ -545,13 +534,11 @@
               "title": "Instalación de Pisos Flotantes",
               "text": "3 Años de Garantía de Mano de Obra - Somos expecialistas.",
               "color": "#ffffff",
-              "link": "",
               "text_alignment": "left",
               "button_one_label": "Ir al Servicio",
               "button_one_link": "shopify:\/\/products\/instalacion-de-piso-flotante",
               "button_one_style": "primary",
               "button_two_label": "",
-              "button_two_link": "",
               "button_two_style": "primary",
               "show_overlay": true,
               "overlay_color": "#000000",
@@ -565,13 +552,10 @@
               "title": "Instalación de Pastos Sintéticos",
               "text": "Jardines, Interiores, Quinchos, Terrazas, donde quieras!!",
               "color": "#ffffff",
-              "link": "",
               "text_alignment": "left",
               "button_one_label": "Aquí más detalles",
-              "button_one_link": "",
               "button_one_style": "primary",
               "button_two_label": "",
-              "button_two_link": "",
               "button_two_style": "secondary",
               "show_overlay": true,
               "overlay_color": "#000000",
@@ -585,13 +569,11 @@
               "title": "Instalación de Alfombras",
               "text": "De cualquier tipo y en cualquier superficie",
               "color": "#ffffff",
-              "link": "",
               "text_alignment": "center",
               "button_one_label": "Solicítalo aquí",
               "button_one_link": "shopify:\/\/products\/copia-de-instalacion-de-alfombras",
               "button_one_style": "primary",
               "button_two_label": "",
-              "button_two_link": "",
               "button_two_style": "secondary",
               "show_overlay": true,
               "overlay_color": "#000000",
@@ -622,8 +604,7 @@
             "settings": {
               "icon": "icon-award-trophy",
               "title": "",
-              "text": "",
-              "link": ""
+              "text": ""
             }
           },
           "1614115478e7f12953-2": {
@@ -631,8 +612,7 @@
             "settings": {
               "icon": "none",
               "title": "",
-              "text": "",
-              "link": ""
+              "text": ""
             }
           },
           "1614115478e7f12953-3": {
@@ -640,8 +620,7 @@
             "settings": {
               "icon": "none",
               "title": "",
-              "text": "",
-              "link": ""
+              "text": ""
             }
           },
           "1614115478e7f12953-1": {
@@ -649,8 +628,7 @@
             "settings": {
               "icon": "none",
               "title": "",
-              "text": "",
-              "link": ""
+              "text": ""
             }
           }
         },
@@ -795,7 +773,6 @@
           "textbox_title": "Visitar la tienda",
           "textbox_subheading": "<p>Make an image shoppable by adding hotspots that link to various products.<\/p>",
           "textbox_button_label": "Botón",
-          "textbox_button_link": "",
           "textbox_button_style": "primary",
           "textbox_text_alignment": "center",
           "textbox_text_position": "left"
@@ -861,8 +838,7 @@
           "thumbnail_columns_mobile": 3,
           "image-crop": "circle",
           "cta_label": "Ver todo",
-          "cta_link": "shopify:\/\/collections\/all",
-          "cta_button_style": "primary"
+          "cta_button_style": "secondary"
         }
       },
       "1614186808567e83f9": {
@@ -893,7 +869,6 @@
               "title": "Grid",
               "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
               "color": "#ffffff",
-              "block_link": "",
               "button_text": "",
               "button_style": "secondary",
               "show_overlay": false,
@@ -908,7 +883,6 @@
               "title": "Grid",
               "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
               "color": "#ffffff",
-              "block_link": "",
               "button_text": "",
               "button_style": "primary",
               "show_overlay": false,
@@ -966,7 +940,6 @@
               "title": "Grid",
               "text": "Use this section to welcome customers to your store, say a bit about your brand, or share news.",
               "color": "#1e1e1e",
-              "block_link": "",
               "button_text": "",
               "button_style": "primary",
               "show_overlay": false,
@@ -1040,25 +1013,6 @@
           "show_locale_selector": true,
           "show_currency_selector": true,
           "show_social_icons": true
-        }
-      },
-      "static-cart": {
-        "type": "static-cart",
-        "blocks": {
-          "c0a9c938-6e53-4f8d-8f94-d6030fb85a59": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/picture_04.jpg"
-            }
-          }
-        },
-        "block_order": [
-          "c0a9c938-6e53-4f8d-8f94-d6030fb85a59"
-        ],
-        "settings": {
-          "enable_order_notes": false,
-          "enable_shipping_calc": false,
-          "shipping_calc_default_country": "Chile"
         }
       }
     },

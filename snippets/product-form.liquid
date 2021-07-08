@@ -725,7 +725,6 @@
     </button>
 </div>
 
-
   {% if product_smart_buttons or quickshop_smart_buttons %}
     {{ form | payment_button }}
   {% endif %}
@@ -733,7 +732,6 @@
   <div data-payment-terms-reference style="display: none;">
     {{ form | payment_terms }}
   </div>
-
   <script>
     var unit_footage = "";
     var str = '';
@@ -851,6 +849,4 @@
   </script>
   <div class="surface-pick-up" data-surface-pick-up></div>
 {% endform %}
-<div style="margin-top: 20px">
-{% render "quotify-button", class: 'product-form--atc-button mdc-ripple-surface mdc-ripple-upgraded' %}
-</div>
+

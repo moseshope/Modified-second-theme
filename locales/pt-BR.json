@@ -486,8 +486,5 @@
     "page": {
       "title": "Título da página"
     }
-  },
-  "quotify": {
-    "request_quote": "Request Quote"
   }
 }

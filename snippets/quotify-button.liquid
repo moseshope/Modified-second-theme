@@ -18,14 +18,14 @@
                 <button data-quotify data-product="{{ product | json | escape }}"
                 data-checksum="{{ product | json | prepend: 'qjQEHtl6NzafizRZ' | sha256  }}" data-shop="36755eb6-18d4-4d76-9383-ba7dbc7f597a"
                 type="button"
-                class="quotify-request-quote-btn {{ class }}">
+                class="quotify-request-quote-btn">
             {{ 'quotify.request_quote' | t }}
         </button>
     {% endif %}
 
     {%- style -%}
     {% if quotify_hide_cart == 1 %}
-{% if shop.metafields.quotify.mode != 'selection' or shop.metafields.quotify.mode == 'selection' and product.metafields.quotify.enabled == 1 or shop.metafields.quotify.mode == 'selection' and quotify_product_in_collection == 1 %}
+        {% if shop.metafields.quotify.mode != 'selection' or shop.metafields.quotify.mode == 'selection' and product.metafields.quotify.enabled == 1 %}
             .template-product form[action^="/cart/add"] [data-shopify="payment-button"],
             .template-product form[action^="/cart/add"] button[type="submit"],
             .quotify-hide-cart-{{ product.id }} {
@@ -34,7 +34,7 @@
         {% endif %}
     {% endif %}
     {% if quotify_hide_price == 1 %}
-{% if shop.metafields.quotify.mode != 'selection' or shop.metafields.quotify.mode == 'selection' and product.metafields.quotify.enabled == 1 or shop.metafields.quotify.mode == 'selection' and quotify_product_in_collection == 1 %}
+        {% if shop.metafields.quotify.mode != 'selection' or shop.metafields.quotify.mode == 'selection' and product.metafields.quotify.enabled == 1 %}
             .quotify-hide-price-{{ product.id }} {
                 display: none !important;
             }
