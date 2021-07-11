@@ -41,17 +41,26 @@
           {{ item.product.title }}
         </a>
       </h2>
-
+      {% assign ancho_val = item.product.metafields.instructions['Formato del rollo']%}
       {% unless item.product.has_only_default_variant %}
         {% for option in item.product.options %}
           <div class="cart-item--product-options">
-            <span class="cart-item--option-name">{{ option }}</span>
+            <span style=" font-size: 1rem; font-weight: bold; color: black;">Ancho(m):&nbsp;<span style="color: #999; font-size: 16px; font-weight: lighter;">{{ ancho_val | slice:0 }}</span></span>
+            <div class="clear"></div>
+            <span class="cart-item--option-name" style=" font-size: 1rem; font-weight: bold; color: black;">{{ option }}</span>
             {{ item.variant.options[forloop.index0] }}
+           
           </div>
         {% endfor %}
       {% endunless %}
 
-      <div class="cart-item--content-price">
+      <div class="cart-item--content-price"
+          {% if item.product.title contains 'Alfombra' or item.product.title contains 'Pasto Sintético'%}
+          {% unless item.product.title contains 'Instalación de' %}
+          style="display:none"
+          {% endunless%}
+          {% endif%}
+      >
         <span class="cart-item--price-title">
           {{ 'cart.general.price' | t }}
         </span>

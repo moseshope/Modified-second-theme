@@ -200,7 +200,7 @@
 
   <div class="price__current {% if emphasize_price %}price__current--emphasize{% endif %} {% if on_sale %}price__current--on-sale{% endif %}" data-price-container>
     {%- capture price_html -%}
-      <span class="money"  data-price>
+      <span class="money" id="" data-price>
         {% if product.title contains 'Caja' %}
           {% assign product_title_split = product.title | split: "Caja" %}
           {% assign average_string = product_title_split[1] | replace: "M²", "" | strip | replace: ",", "." %}
@@ -218,11 +218,11 @@
             <span style="font-size: 21px" class="price_current-caja-symbol">M²</span>
           {% endunless %} 
         {% endif%}        
-        {%if product.title contains 'Alfombra'%}
+        <!-- {%if product.title contains 'Alfombra'%}
           {% unless product.title contains 'Instalación de' %}
             <span style="font-size: 21px" class="price_current-caja-symbol">M²</span>
           {% endunless %} 
-        {% endif%}        
+        {% endif%}         -->
         {%if product.title contains 'Pasto Sintético'%}
           {% unless product.title contains 'Instalación de' %}
             <span style="font-size: 21px" class="price_current-caja-symbol">M²</span>

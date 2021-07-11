@@ -5,7 +5,7 @@
 
   @param selected_variant
 {% endcomment %}
-
+{% assign instructions = product.metafields.instructions %}
 {% if is_product_modal and settings.quickshop_show_dcb %}
   {% assign quickshop_smart_buttons = true %}
 {% endif %}
@@ -63,6 +63,7 @@
   {% assign product = product %}
   {% assign selected_variant = selected_variant %}
   {% assign style = settings.product_option_style %}
+  {% assign style = 'select' %}
   {% assign enable_swatches = settings.swatches_enable %}
   {% assign swatches_shape = settings.swatches_shape %}
   {% assign swatches_option_trigger = settings.swatches_swatch_trigger %}
@@ -264,42 +265,82 @@
                 variants-ui__input-select-wrapper
                 {{ input_select_wrapper_classes }}
               "
-            >
-              <select
-                id="data-variant-option-{{ option_index }}"
-                class="
-                  variants-ui__input-select
-                  {{ input_select_classes }}
-                "
-                data-variant-option
-                data-variant-option-index="{{ option_index }}"
-                data-variant-option-chosen-value="{% if selected_variant %}{{ option.selected_value }}{% else %}false{% endif %}"
-              >
-                {% unless selected_variant %}
-                  <option
-                    value=""
-                    disabled
-                    selected
-                    data-variant-option-value-wrapper
-                    data-variant-option-value
-                    data-variant-option-value-index="{{ option_index }}"
+            > 
+              <div style="width: 50%; float: left;">
+                <div>
+                  <label for='select-width' class="select-width-label">
+                    Ancho
+                  </label>
+                  <select id='select-width' 
+                  style="padding: 10px;width: 80%;"
+                  class="
+                      select-current-width
+                      select-width-arrow
+                      variants-ui__input-select
+                      {{ input_select_classes }}
+                    "
                   >
-                    {{ 'product.variants.choose_option' | t: option: option.name }}
-                  </option>
-                {% endunless %}
-                {% for value in option.values %}
-                  <option
-                    value="{{ value | escape }}"
-                    {% if selected_variant and option.selected_value == value %}selected{% endif %}
-                    data-variant-option-value-wrapper
-                    data-variant-option-value
-                    data-variant-option-value-index="{{ option_index }}"
+                    <option>
+                      {{ instructions['Formato del rollo'] | slice:0 }}
+                    </option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+                <div style=" margin-top: 17px;">
+                  <label for="select-length" class="select-width-label">
+                    Largo
+                  </label>
+                  <select
+                    id="data-variant-option-{{ option_index }}"
+                    style="padding: 10px; width: 80%;"
+                    class="
+                      select-current-length
+                      select-width-arrow
+                      variants-ui__input-select
+                      {{ input_select_classes }}
+                    "
+                    select-length
+                    data-variant-option
+                    data-variant-option-index="{{ option_index }}"
+                    data-variant-option-chosen-value="{% if selected_variant %}{{ option.selected_value }}{% else %}false{% endif %}"
                   >
-                    {{ value }}
-                  </option>
-                {% endfor %}
-              </select>
-              <label
+                    {% unless selected_variant %}
+    
+                      <option
+                        value=""
+                        disabled
+                        selected
+                        data-variant-option-value-wrapper
+                        data-variant-option-value
+                        data-variant-option-value-index="{{ option_index }}"
+                      >
+                        {{ 'product.variants.choose_option' | t: option: option.name }}
+                      </option>
+                    {% endunless %}
+                    
+                    {% for value in option.values %}
+                      <option
+                        value="{{ value | escape }}"
+                        {% if selected_variant and option.selected_value == value %}selected{% endif %}
+                        data-variant-option-value-wrapper
+                        data-variant-option-value
+                        data-variant-option-value-index="{{ option_index }}"
+                      >
+                        {{ value }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div style="width: 50%; float: right; text-align: center; padding-left: 10%;">
+                <label>
+                  La cantidad y el tamaño de rollos elegidos costarían:
+                </label>
+                <h2 id="variant_current--price"></h2>
+              </div>
+              <div class="clear"></div>
+
+              <!-- <label
                 class="
                   variants-ui__input-select-label
                   {{ input_select_label_classes }}
@@ -307,14 +348,14 @@
                 for="data-variant-option-{{ forloop.index0 }}"
                 data-variant-option-name="{{ option.name }}"
                 data-variant-option-choose-name="{{ 'product.variants.choose_option' | t: option: option.name }}"
-              >
-                {% if selected_variant %}
+              > -->
+                <!-- {% if selected_variant %}
                   {{ option.name }}
                 {% else %}
                   {{ 'product.variants.choose_option' | t: option: option.name }}
-                {% endif %}
-              </label>
-              <div
+                {% endif %} -->
+              <!-- </label> -->
+              <!-- <div
                 class="
                   variants-ui__input-select-chevron
                   {{ input_select_chevron_classes }}
@@ -333,7 +374,7 @@
                   <path d="M4 4.5L7 1.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/>
                   <path d="M4 4.5L1 1.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/>
                 </svg>
-              </div>
+              </div> -->
             </div>
           </div>
           {% comment %}Inject @pixelunion/shopify-variants-ui/variants-ui-select end{% endcomment %}
@@ -608,15 +649,29 @@
   
   {% endif %}
   {% comment %}Inject @pixelunion/shopify-variants-ui/variants-ui end{% endcomment %}
+  {% assign technical_sheet_confirm = instructions['Formato del rollo']%}
 
-
-  <div class="product-form--atc">
+  <div class="product-form--atc" 
+  {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+    {% unless product.title contains 'Instalación de' %}
+      {% unless technical_sheet_confirm == '' %}
+        style=" text-align: center;"
+      {% endunless%}
+    {% endunless%}
+  {% endif%}
+  >
     <div class="product-form--atc-qty form-fields--qty" id="product-form-atc-qty-id" data-quantity-wrapper>
       <div class="form-field form-field--qty-select">
         <div class="form-field-select-wrapper">
           <select
             id="product-quantity-select"
-            class="form-field-input form-field-select"
+            class="form-field-input form-field-select
+            {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+              {% unless product.title contains 'Instalación de' %}
+                product-quantity-select-input
+              {% endunless%}
+            {% endif%}
+            "
             aria-label="{{ 'general.general.quantity' | t }}"
             data-quantity-select
           >
@@ -641,7 +696,13 @@
       <div class="form-field form-field--qty-input hidden">
         <input
           id="product-quantity-input"
-          class="form-field-input form-field-number form-field-filled"
+          class="form-field-input form-field-number form-field-filled 
+          {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+            {% unless product.title contains 'Instalación de' %}
+              product-quantity-select-input
+            {% endunless%}
+          {% endif %}
+          "
           value="1"
           name="quantity"
           type="text"
@@ -739,7 +800,21 @@
     return str.split('Caja')[1];
     }
     $(document).ready(function(){
-      
+      $('#variant_current--price').text($('#price_current-caja-price').text().replace('.',','));
+      $('.product-quantity-select-input').change(function() {
+          var current_price = $('#price_current-caja-price').text().slice(1,);
+          var length = $('.select-current-length').val();
+          var width =  $('.select-current-width').val();
+          var total_current_price = (current_price * length * $(this).val()).toFixed(2) ;
+          $('#variant_current--price').text('$'+total_current_price.toString().replace('.',','));
+      });
+      $('.select-current-length').change(function() {
+          var current_price = $('#price_current-caja-price').text().slice(1,);
+          var length = $(this).val();
+          var width =  $('.select-current-width').val();
+          var total_current_price = (current_price * length * $('.product-quantity-select-input').val()).toFixed(2) ;
+          $('#variant_current--price').text('$'+total_current_price.toString().replace('.',','));
+      });
       $(".product-description-title").click(function() {
       	$(".product-description").toggleClass('hidden');
         $(this).toggleClass('title-active');
