@@ -200,7 +200,13 @@
 
   <div class="price__current {% if emphasize_price %}price__current--emphasize{% endif %} {% if on_sale %}price__current--on-sale{% endif %}" data-price-container>
     {%- capture price_html -%}
-      <span class="money" id="" data-price>
+      <span class="money"  id = "current-price" data-price
+        {%if product.title contains 'Alfombra' or product.title contains 'Pasto'%}
+        {% unless product.title contains 'Instalación de' %}
+          style="font-weight: bold; font-size:25px"
+        {% endunless %} 
+        {% endif%}  
+      >
         {% if product.title contains 'Caja' %}
           {% assign product_title_split = product.title | split: "Caja" %}
           {% assign average_string = product_title_split[1] | replace: "M²", "" | strip | replace: ",", "." %}
@@ -209,7 +215,7 @@
           {% assign sqm_symbol = "M²" %}
           <p class="price_current-sqm-price">{{sqm_price | abs | money }}{{sqm_symbol}}</p>
         {% endif %}
-        <span id = 'price_current-caja-price'>{{ price | money }}</span>
+        <span id = 'price_current-caja-price'>{{ price | money  }}</span>
         {% if product.title contains 'Caja' %}
           <span style="font-size: 21px" class="price_current-caja-symbol">CAJA</span>
         {% endif %}
@@ -218,11 +224,11 @@
             <span style="font-size: 21px" class="price_current-caja-symbol">M²</span>
           {% endunless %} 
         {% endif%}        
-        <!-- {%if product.title contains 'Alfombra'%}
+        {%if product.title contains 'Alfombra'%}
           {% unless product.title contains 'Instalación de' %}
             <span style="font-size: 21px" class="price_current-caja-symbol">M²</span>
           {% endunless %} 
-        {% endif%}         -->
+        {% endif%}        
         {%if product.title contains 'Pasto Sintético'%}
           {% unless product.title contains 'Instalación de' %}
             <span style="font-size: 21px" class="price_current-caja-symbol">M²</span>
@@ -236,9 +242,8 @@
     {% capture current_price_range_html %}
       {% if price_varies %}
         {% if price_range_format == 'range' %}
-          <span class="money price__current--min" data-price-min>{{ price_min | money}}</span>
-          -
-          <span class="money price__current--max" data-price-max>{{ price_max | money }}</span>
+          <span class="money price__current--min" data-price-min>{{ price_min | money}}M²</span>
+          <!-- <span class="money price__current--max" data-price-max>{{ price_max | money }}</span> -->
         {% else %}
           {{ 'product_price.price.range_html' | t: price: price_html | strip_newlines }}
         {% endif %}

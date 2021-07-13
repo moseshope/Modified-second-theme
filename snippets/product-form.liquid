@@ -260,19 +260,24 @@
               {{ select_classes }}
             "
           >
+            <div class="purchase-here">
+              
+              <span class="purchase-here--title">Selecciona el corte</span>
+            </div>
             <div
               class="
                 variants-ui__input-select-wrapper
                 {{ input_select_wrapper_classes }}
               "
+              style=" padding: 20px; background: #f1f1f1; padding-bottom: 0px;"
             > 
-              <div style="width: 50%; float: left;">
+              <div style="width: 48%; float: left; padding-left: 5px;">
                 <div>
                   <label for='select-width' class="select-width-label">
-                    Ancho
+                    Ancho(m):
                   </label>
                   <select id='select-width' 
-                  style="padding: 10px;width: 80%;"
+                  style="padding: 10px;width: 50%;"
                   class="
                       select-current-width
                       select-width-arrow
@@ -281,18 +286,22 @@
                     "
                   >
                     <option>
-                      {{ instructions['Formato del rollo'] | slice:0 }}
+                      {% assign option_val = instructions['Formato del rollo'] | slice:0 %}
+                      {{ option_val }}
+                      {% if option_val == ''%}
+                        4
+                      {% endif %}
                     </option>
                   </select>
                 </div>
                 <div class="clear"></div>
                 <div style=" margin-top: 17px;">
                   <label for="select-length" class="select-width-label">
-                    Largo
+                    Largo(m):
                   </label>
                   <select
                     id="data-variant-option-{{ option_index }}"
-                    style="padding: 10px; width: 80%;"
+                    style="padding: 10px; width: 50%;"
                     class="
                       select-current-length
                       select-width-arrow
@@ -332,75 +341,16 @@
                   </select>
                 </div>
               </div>
-              <div style="width: 50%; float: right; text-align: center; padding-left: 10%;">
+              <div style="width: 40%; float: right; text-align: center;">
                 <label>
                   La cantidad y el tamaño de rollos elegidos costarían:
                 </label>
                 <h2 id="variant_current--price"></h2>
               </div>
               <div class="clear"></div>
-
-              <!-- <label
-                class="
-                  variants-ui__input-select-label
-                  {{ input_select_label_classes }}
-                "
-                for="data-variant-option-{{ forloop.index0 }}"
-                data-variant-option-name="{{ option.name }}"
-                data-variant-option-choose-name="{{ 'product.variants.choose_option' | t: option: option.name }}"
-              > -->
-                <!-- {% if selected_variant %}
-                  {{ option.name }}
-                {% else %}
-                  {{ 'product.variants.choose_option' | t: option: option.name }}
-                {% endif %} -->
-              <!-- </label> -->
-              <!-- <div
-                class="
-                  variants-ui__input-select-chevron
-                  {{ input_select_chevron_classes }}
-                "
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  role="presentation"
-                  width="8"
-                  height="6"
-                  viewBox="0 0 8 6"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M4 4.5L7 1.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/>
-                  <path d="M4 4.5L1 1.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/>
-                </svg>
-              </div> -->
             </div>
           </div>
-          {% comment %}Inject @pixelunion/shopify-variants-ui/variants-ui-select end{% endcomment %}
-    
         {% elsif style == 'radio' or show_swatches == true %}
-          {% comment %}Inject @pixelunion/shopify-variants-ui/variants-ui-radios begin{% endcomment %}
-          {% comment %}
-            Display variant options for a product
-          
-            @param selected_variant
-          
-            @param radios_classes
-            @param option_header_classes
-            @param option_name_classes
-            @param option_values_classes
-            @param option_value_classes
-            @param option_value_label_classes
-            @param option_value_input_classes
-            @param option_value_name_classes
-          
-            @param swatches_classes
-            @param option_swatch_wrapper_classes
-            @param option_swatch_classes
-            @param option_swatch_inner_classes
-          {% endcomment %}
-          
           <fieldset
             class="
               {% unless show_swatches %}
@@ -655,14 +605,25 @@
   {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
     {% unless product.title contains 'Instalación de' %}
       {% unless technical_sheet_confirm == '' %}
-        style=" text-align: center;"
+        style=" text-align: center; background: #f1f1f1; margin-top: 0; padding-top: 16px;"
       {% endunless%}
     {% endunless%}
   {% endif%}
   >
-    <div class="product-form--atc-qty form-fields--qty" id="product-form-atc-qty-id" data-quantity-wrapper>
+    <div class="product-form--atc-qty form-fields--qty" id="product-form-atc-qty-id" data-quantity-wrapper
+      {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+      {% unless product.title contains 'Instalación de' %}
+        style="width: 10.1875rem;"
+      {% endunless%}
+      {% endif%}
+    >
       <div class="form-field form-field--qty-select">
-        <div class="form-field-select-wrapper">
+        <div class="form-field-select-wrapper" style="display: flex;">
+          {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+            {% unless product.title contains 'Instalación de' %}
+              <label for="product-quantity-select" style="font-size: 15px; padding-left: 9px; padding-top: 9px; padding-right: 9px; margin-right: 9px; background-color: #ccc;">Cantidad</label>
+            {% endunless%}
+          {% endif%}
           <select
             id="product-quantity-select"
             class="form-field-input form-field-select
@@ -672,6 +633,11 @@
               {% endunless%}
             {% endif%}
             "
+            {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+            {% unless product.title contains 'Instalación de' %}
+              style="padding-top: 6px;"
+            {% endunless%}
+            {% endif%}
             aria-label="{{ 'general.general.quantity' | t }}"
             data-quantity-select
           >
@@ -687,6 +653,11 @@
           <label
             for="product-quantity-select"
             class="form-field-title"
+            {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+            {% unless product.title contains 'Instalación de' %}
+              style="display: none;"
+            {% endunless%}
+            {% endif%}
           >
             {{ 'general.general.quantity' | t }}
           </label>
@@ -703,6 +674,11 @@
             {% endunless%}
           {% endif %}
           "
+          {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+          {% unless product.title contains 'Instalación de' %}
+            style="padding-top: 6px;"
+          {% endunless%}
+          {% endif%}
           value="1"
           name="quantity"
           type="text"
@@ -713,6 +689,11 @@
         <label
           for="product-quantity-input"
           class="form-field-title"
+          {% if product.title contains 'Alfombra' or product.title contains 'Pasto Sintético'%}
+          {% unless product.title contains 'Instalación de' %}
+            style="display: none;"
+          {% endunless%}
+          {% endif%}
         >
           {{ 'general.general.quantity' | t }}
         </label>
@@ -800,21 +781,38 @@
     return str.split('Caja')[1];
     }
     $(document).ready(function(){
-      $('#variant_current--price').text($('#price_current-caja-price').text().replace('.',','));
+      var hold_initial = false;
+      var initial_caja ;
+      var width =  $('.select-current-width').val();
+      var caja_price = $('#price_current-caja-price').text();
+      if( hold_initial == false )
+      {
+        initial_caja = caja_price;
+        hold_initial = true ;
+      }
+      var length = $('.select-current-length').val();
+      $('#variant_current--price').text( '$' + (caja_price.slice(1,) * length * $('.product-quantity-select-input').val()/0.25).toFixed(3));
       $('.product-quantity-select-input').change(function() {
-          var current_price = $('#price_current-caja-price').text().slice(1,);
-          var length = $('.select-current-length').val();
-          var width =  $('.select-current-width').val();
-          var total_current_price = (current_price * length * $(this).val()).toFixed(2) ;
-          $('#variant_current--price').text('$'+total_current_price.toString().replace('.',','));
+          var current_price = caja_price.slice(1,);
+           length = $('.select-current-length').val();
+          var total_current_price = (current_price * length * $(this).val()/0.25).toFixed(3) ;
+          $('#variant_current--price').text('$'+total_current_price);
+          $('#price_current-caja-price').text( initial_caja );
       });
       $('.select-current-length').change(function() {
-          var current_price = $('#price_current-caja-price').text().slice(1,);
-          var length = $(this).val();
-          var width =  $('.select-current-width').val();
-          var total_current_price = (current_price * length * $('.product-quantity-select-input').val()).toFixed(2) ;
-          $('#variant_current--price').text('$'+total_current_price.toString().replace('.',','));
+          var current_price = caja_price.slice(1,);
+           length = $(this).val();
+          var total_current_price =( current_price * length * $('.product-quantity-select-input').val()/0.25).toFixed(3) ;
+          $('#variant_current--price').text('$'+total_current_price);//M²
+          $('#price_current-caja-price').text( initial_caja );
+          // $('#fixed-price').text($('#price_current-caja-price').text().slice(1,)/width);
+          $('#fixed-price').text("OK");
       });
+
+      $('body').on('DOMSubtreeModified', '#current-price', function(){
+        $('#current-price').text(initial_caja + ' M²');
+      });
+
       $(".product-description-title").click(function() {
       	$(".product-description").toggleClass('hidden');
         $(this).toggleClass('title-active');
